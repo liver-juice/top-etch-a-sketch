@@ -22,13 +22,18 @@
         // when the button is pressed, prompt user for a new grid size. pass that value
         //as a param to the createGrid function.
         gridButton.addEventListener("click", () => {
-
-            createGrid(size=prompt("Enter size: "))
+            let size=prompt("Enter size: ")
+            if (size >= 100){
+                prompt('thats too dam big! max size 100.');
+            }
+            else {
+                createGrid(size)
+            }
         })
 
 
 
-        function createRow(){
+        function createRow(size){
             let rowDiv = document.createElement("div");
             rowDiv.style.display = "flex";
             rowDiv.classList.add("rowdiv");
@@ -70,6 +75,8 @@
             })
         })
         }
+
+        createGrid(size=16);
 
     </script>
 </body>
