@@ -7,8 +7,9 @@
     <title>Etch a Sketch</title>
 </head>
 <body>
-    
+    <button id="newgrid">New Grid?</button>
     <div class="parentwindow">
+    
 
     </div>
 
@@ -16,6 +17,14 @@
 
     <script>
         let parentwindow = document.querySelector(".parentwindow");
+        let gridButton = document.querySelector("#newgrid");
+
+        // when the button is pressed, prompt user for a new grid size. pass that value
+        //as a param to the createGrid function.
+        gridButton.addEventListener("click", () => {
+
+            createGrid(size=prompt("Enter size: "))
+        })
 
 
 
@@ -24,7 +33,7 @@
             rowDiv.style.display = "flex";
             rowDiv.classList.add("rowdiv");
             rowDiv.style.height = "100%"
-            for (let i = 0; i < 16; i ++){
+            for (let i = 0; i < size; i ++){
                 insideRowDiv = document.createElement("div");
                 insideRowDiv.style.display = "flex";
                 insideRowDiv.style.flexGrow = "1";
@@ -35,14 +44,24 @@
             parentwindow.appendChild(rowDiv);
         }
 
-        for (let col = 0; col < 16; col ++){
-            createRow();
-        }
+        function createGrid(size){
 
+            // clears the old grid so we can make a new one
+                parentwindow.innerHTML = "";
+
+            // using the input gathered, call the createRow function x times.
+            for (let col = 0; col < size; col ++){
+                // creates a row of x "tiles"
+                createRow(size);
+            }
+            // sets the hover effect for the new grid
+            createHover();
+        }
 
 
         // gather a list of all of our "insiderowdivs" using queryselectorall.
         // for each node in that list, we will create an event listener
+        function createHover(){
         let nodeList = document.querySelectorAll(".insiderowdiv");
         nodeList.forEach((element) => {
             element.addEventListener("mouseover", () => {
@@ -50,6 +69,7 @@
                 console.log('HOVERING.');
             })
         })
+        }
 
     </script>
 </body>
