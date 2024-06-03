@@ -22,16 +22,35 @@
         function createRow(){
             let rowDiv = document.createElement("div");
             rowDiv.style.display = "flex";
+            rowDiv.classList.add("rowdiv");
+            rowDiv.style.height = "100%"
             for (let i = 0; i < 16; i ++){
                 insideRowDiv = document.createElement("div");
+                insideRowDiv.style.display = "flex";
+                insideRowDiv.style.flexGrow = "1";
+                insideRowDiv.classList.add("insiderowdiv");
+
                 rowDiv.appendChild(insideRowDiv)
             }
             parentwindow.appendChild(rowDiv);
         }
+
         for (let col = 0; col < 16; col ++){
             createRow();
         }
-        
+
+
+
+        // gather a list of all of our "insiderowdivs" using queryselectorall.
+        // for each node in that list, we will create an event listener
+        let nodeList = document.querySelectorAll(".insiderowdiv");
+        nodeList.forEach((element) => {
+            element.addEventListener("mouseover", () => {
+                element.style.background = "gray";
+                console.log('HOVERING.');
+            })
+        })
+
     </script>
 </body>
 </html>
