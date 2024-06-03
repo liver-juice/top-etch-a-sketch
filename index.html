@@ -22,8 +22,8 @@
         // when the button is pressed, prompt user for a new grid size. pass that value
         //as a param to the createGrid function.
         gridButton.addEventListener("click", () => {
-            let size=prompt("Enter size: ")
-            if (size >= 100){
+            let size=prompt("Enter size (max 100): ")
+            if (size > 100){
                 prompt('thats too dam big! max size 100.');
             }
             else {
@@ -70,7 +70,7 @@
         let nodeList = document.querySelectorAll(".insiderowdiv");
         nodeList.forEach((element) => {
             element.addEventListener("mouseover", () => {
-                element.style.background = "gray";
+                element.style.background = "gold";
                 console.log('HOVERING.');
             })
         })
