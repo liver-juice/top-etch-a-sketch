@@ -70,10 +70,18 @@
         let nodeList = document.querySelectorAll(".insiderowdiv");
         nodeList.forEach((element) => {
             element.addEventListener("mouseover", () => {
-                element.style.background = "gold";
+                let color = createColor();
+                element.style.background = color;
                 console.log('HOVERING.');
             })
         })
+        }
+
+        function createColor(){
+            let r = (Math.random() * 255)
+            let g = (Math.random() * 255)
+            let b = (Math.random() * 255)
+            return `rgb(${r}, ${g}, ${b})`
         }
 
         createGrid(size=16);
